@@ -8,40 +8,48 @@ If you see a better solution, pull requests are VERY welcome.
 
 ## The Problems
 
-The purpose of this problem collection is to give you the opportunity to practice your skills in logic programming. Your goal should be to find the most elegant solution of the given problems. Efficiency is important, but logical clarity is even more crucial. Some of the (easy) problems can be trivially solved using built-in predicates. However, in these cases, you learn more if you try to find your own solution.
+The purpose of this problem collection is to give you the opportunity to
+practice your skills in logic programming. Your goal should be to find the most
+elegant solution of the given problems. Efficiency is important, but logical
+clarity is even more crucial. Some of the (easy) problems can be trivially
+solved using built-in functions. However, in these cases, you learn more if
+you try to find your own solution.
 
-The problems have different levels of difficulty. Those marked with a single dollar sign ($) are easy. If you have successfully solved the preceeding problems
-you should be able to solve them within a few (say 15) minutes. Problems marked
-with two dollar signs ($) are of intermediate difficulty. If you are a skilled
-Kotlin programmer it shouldn't take you more than 30-90 minutes to solve them.
-Problems marked with three asterisks ($$$) are more difficult. You may need more
-time (i.e. a few hours or more) to find a good solution.
+The problems have different levels of difficulty. Those marked with a single
+dollar sign ($) are easy. If you have successfully solved the preceeding
+problems you should be able to solve them within a few (say 15) minutes.
+Problems marked with two dollar signs ($$) are of intermediate difficulty. If
+you are a skilled Kotlin programmer it shouldn't take you more than 30-90
+minutes to solve them.  Problems marked with three dollar ($$$) are more
+difficult. You may need more time (i.e. a few hours or more) to find a good
+solution.
 
 ### Working with Lists
 
-A list is either empty or it is composed of a first element (head) and a tail, which is a list itself.
+A list is either empty or it is composed of a first element (head) and a tail,
+which is a list itself.
 
 
 #### K01
 **($) Find the last element of a list.**
 
-    Example
-    ?- my_last(X,[a,b,c,d]).
-    X = d
+    Example:
+    ?- myLast(listOf(a,b,c,d)).
+    d
 
 #### K02
 **($) Find the last but one element of a list.**
 
-    (zweitletztes Element, l'avant-dernier élément)
+*(zweitletztes Element, l'avant-dernier élément)*
 
 #### K03
 **($) Find the K'th element of a list.**
 
 The first element in the list is number 1.
 
-    Example
-    ?- element_at(X,[a,b,c,d,e],3).
-    X = c
+    Example:
+    ?- elementAt([a,b,c,d,e],3)
+    c
 
 #### K04
 **($) Find the number of elements of a list.**
@@ -52,59 +60,73 @@ The first element in the list is number 1.
 #### K06
 **($) Find out whether a list is a palindrome.**
 
-    A palindrome can be read forward or backward; e.g. [x,a,m,a,x].
+A palindrome can be read forward or backward; e.g. `[x,a,m,a,x]`.
 
-#### [K07](src/main/kotlin/k07.kt) ($$) Flatten a nested list structure.
+#### [K07](src/main/kotlin/k07.kt)
+**($$) Flatten a nested list structure.**
 
 Transform a list, possibly holding lists as elements into a 'flat' list by replacing each list with its elements (recursively).
 
-    Example
-    ?- my_flatten([a, [b, [c, d], e]], X).
+    Example:
+    flatten([a, [b, [c, d], e]], X).
     X = [a, b, c, d, e]
 
     Hint: Use the predefined predicates is_list/1 and append/3
 
-#### K08
+#### [K08](src/main/kotlin/k08.kt)
 **($$) Eliminate consecutive duplicates of list elements.**
     If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
 
-    Example
+    Example:
     ?- compress([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [a,b,c,a,d,e]
 
-#### K09
+#### [K09](src/main/kotlin/k09.kt)
 **($$) Pack consecutive duplicates of list elements into sublists.**
     If a list contains repeated elements they should be placed in separate sublists.
 
-    Example
+    Example:
     ?- pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e]]
 
-#### K10
+#### [K10](src/main/kotlin/k10.kt)
 **($) Run-length encoding of a list.**
-    Use the result of problem P09 to implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as terms [N,E] where N is the number of duplicates of the element E.
+Use the result of problem [P09](#p09) to implement the so-called run-length encoding
+data compression method. Consecutive duplicates of elements are encoded as
+pairs `(N to E)` where `N` is the number of duplicates of the element `E`.
 
-    Example
-    ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
-    X = [[4,a],[1,b],[2,c],[2,a],[1,d][4,e]]
+    Example:
+    ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e])
+    [(4 to a),(1 to b),(2 to c),(2 to a),(1 to d),(4 to e)]
+
+## UNDER CONSTRUCTION
 
 #### K11
 **($) Modified run-length encoding.**
-    Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as [N,E] terms.
 
-    Example
+Modify the result of problem [P10](#p10) in such a way that if an element has
+no duplicates it is simply copied into the result list. Only elements with
+duplicates are transferred as [N,E] terms.
+
+    Example:
     ?- encode_modified([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
 #### K12
 **($$) Decode a run-length encoded list.**
-    Given a run-length code list generated as specified in problem P11. Construct its uncompressed version.
+
+Given a run-length code list generated as specified in problem [P11](#P11). Construct
+its uncompressed version.
 
 #### K13
 **($$) Run-length encoding of a list (direct solution).**
-    Implement the so-called run-length encoding data compression method directly. I.e. don't explicitly create the sublists containing the duplicates, as in problem P09, but only count them. As in problem P11, simplify the result list by replacing the singleton terms [1,X] by X.
 
-    Example
+Implement the so-called run-length encoding data compression method directly.
+I.e. don't explicitly create the sublists containing the duplicates, as in
+problem [P09](#p09), but only count them. As in problem [P11](#p11), simplify
+the result list by replacing the singleton terms [1,X] by X.
+
+    Example:
     ?- encode_direct([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
@@ -136,7 +158,7 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 **($) Split a list into two parts; the length of the first part is given.**
     Do not use any predefined predicates.
 
-    Example
+    Example:
     ?- split([a,b,c,d,e,f,g,h,i,k],3,L1,L2).
     L1 = [a,b,c]
     L2 = [d,e,f,g,h,i,k]
@@ -145,7 +167,7 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 **($$) Extract a slice from a list.**
     Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
 
-    Example
+    Example:
     ?- slice([a,b,c,d,e,f,g,h,i,k],3,7,L).
     X = [c,d,e,f,g]
 
@@ -215,7 +237,7 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 **($$) Generate the combinations of K distinct objects chosen from the N elements of a list**
     In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities (via backtracking).
 
-    Example
+    Example:
     ?- combination(3,[a,b,c,d,e,f],L).
     L = [a,b,c] ;
     L = [a,b,d] ;
@@ -226,14 +248,14 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 **($$) Group the elements of a set into disjoint subsets.**
     a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? Write a predicate that generates all the possibilities via backtracking.
 
-    Example
+    Example:
     ?- group3([aldo,beat,carla,david,evi,flip,gary,hugo,ida],G1,G2,G3).
     G1 = [aldo,beat], G2 = [carla,david,evi], G3 = [flip,gary,hugo,ida]
     ...
 
     b) Generalize the above predicate in a way that we can specify a list of group sizes and the predicate will return a list of groups.
 
-    Example
+    Example:
     ?- group([aldo,beat,carla,david,evi,flip,gary,hugo,ida],[2,2,5],Gs).
     Gs = [[aldo,beat],[carla,david],[evi,flip,gary,hugo,ida]]
     ...
@@ -247,13 +269,13 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 
 a) We suppose that a list (InList) contains elements that are lists themselves. The objective is to sort the elements of InList according to their length. E.g. short lists first, longer lists later, or vice versa.
 
-    Example
+    Example:
     ?- lsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
 
 b) Again, we suppose that a list (InList) contains elements that are lists themselves. But this time the objective is to sort the elements of InList according to their length frequency; i.e. in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later.
 
-    Example
+    Example:
     ?- lfsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[i, j, k, l], [o], [a, b, c], [f, g, h], [d, e], [d, e], [m, n]]
 
@@ -346,7 +368,7 @@ Given a range of integers by its lower and upper limit, construct a list of all 
 
 Goldbach's conjecture says that every positive even number greater than 2 is the sum of two prime numbers. Example: 28 = 5 + 23. It is one of the most famous facts in number theory that has not been proved to be correct in the general case. It has been numerically confirmed up to very large numbers (much larger than we can go with our Prolog system). Write a predicate to find the two prime numbers that sum up to a given even integer.
 
-    Example
+    Example:
     ?- goldbach(28, L).
     L = [5,23]
 
@@ -355,7 +377,7 @@ Goldbach's conjecture says that every positive even number greater than 2 is the
 
 Given a range of integers by its lower and upper limit, print a list of all even numbers and their Goldbach composition.
 
-    Example
+    Example:
     ?- goldbach_list(9,20).
     10 = 3 + 7
     12 = 5 + 7
@@ -384,7 +406,7 @@ A logical expression in two variables can then be written in prefix notation, as
 
 Now, write a predicate table/3 which prints the truth table of a given logical expression in two variables.
 
-    Example
+    Example:
     ?- table(A,B,and(A,or(A,B))).
     true true true
     true fail true
@@ -396,7 +418,7 @@ Now, write a predicate table/3 which prints the truth table of a given logical e
 
 Continue problem P46 by defining and/2, or/2, etc as being operators. This allows to write the logical expression in the more natural way, as in the example: A and (A or not B). Define operator precedence as usual; i.e. as in Java.
 
-    Example
+    Example:
     ?- table(A,B, A and (A or not B)).
     true true true
     true fail true
@@ -408,7 +430,7 @@ Continue problem P46 by defining and/2, or/2, etc as being operators. This allow
 
 Generalize problem P47 in such a way that the logical expression may contain any number of logical variables. Define table/2 in a way that table(List,Expr) prints the truth table for the expression Expr, which contains the logical variables enumerated in List.
 
-    Example
+    Example:
     ?- table([A,B,C], A and (B or C) equ A and B or A and C).
     true true true true
     true true fail true
@@ -708,7 +730,7 @@ The following pictures show how multiway tree structures are represented in Lisp
 
 Note that in the "lispy" notation a node with successors (children) in the tree is always the first element in a list, followed by its children. The "lispy" representation of a multiway tree is a sequence of atoms and parentheses '(' and ')', which we shall collectively call "tokens". We can represent this sequence of tokens as a Prolog list; e.g. the lispy expression (a (b c)) could be represented as the Prolog list ['(', a, '(', b, c, ')', ')']. Write a predicate tree_ltl(T,LTL) which constructs the "lispy token list" LTL if the tree is given as term T in the usual Prolog notation.
 
-    Example
+    Example:
     ?- tree_ltl(t(a,[t(b,[]),t(c,[])]),LTL).
     LTL = ['(', a, '(', b, c, ')', ')']
 
