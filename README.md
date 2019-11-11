@@ -91,7 +91,7 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 
 #### [K10](src/main/kotlin/k10.kt)
 **($) Run-length encoding of a list.**
-Use the result of problem [P09](#p09) to implement the so-called run-length encoding
+Use the result of problem [P09](#k09) to implement the so-called run-length encoding
 data compression method. Consecutive duplicates of elements are encoded as
 pairs `(N to E)` where `N` is the number of duplicates of the element `E`.
 
@@ -104,7 +104,7 @@ pairs `(N to E)` where `N` is the number of duplicates of the element `E`.
 #### K11
 **($) Modified run-length encoding.**
 
-Modify the result of problem [P10](#p10) in such a way that if an element has
+Modify the result of problem [P10](#k10) in such a way that if an element has
 no duplicates it is simply copied into the result list. Only elements with
 duplicates are transferred as [N,E] terms.
 
@@ -115,7 +115,7 @@ duplicates are transferred as [N,E] terms.
 #### K12
 **($$) Decode a run-length encoded list.**
 
-Given a run-length code list generated as specified in problem [P11](#P11). Construct
+Given a run-length code list generated as specified in problem [P11](#k11). Construct
 its uncompressed version.
 
 #### K13
@@ -123,7 +123,7 @@ its uncompressed version.
 
 Implement the so-called run-length encoding data compression method directly.
 I.e. don't explicitly create the sublists containing the duplicates, as in
-problem [P09](#p09), but only count them. As in problem [P11](#p11), simplify
+problem [P09](#k09), but only count them. As in problem [P11](#k11), simplify
 the result list by replacing the singleton terms [1,X] by X.
 
     Example:
