@@ -24,13 +24,18 @@ minutes to solve them.  Problems marked with three dollar ($$$) are more
 difficult. You may need more time (i.e. a few hours or more) to find a good
 solution.
 
+Please note that these problems are designed for prolog. Creative solutions may 
+be required to adapt some of the constraints. (*Especially* multilevel lists.)
+
 ### Working with Lists
 
 A list is either empty or it is composed of a first element (head) and a tail,
 which is a list itself.
 
-
 #### K01
+
+[solution](src/main/kotlin/K01.kt)
+
 **($) Find the last element of a list.**
 
     Example:
@@ -38,11 +43,17 @@ which is a list itself.
     d
 
 #### K02
+
+[solution](src/main/kotlin/K02.kt)
+
 **($) Find the last but one element of a list.**
 
 *(zweitletztes Element, l'avant-dernier élément)*
 
 #### K03
+
+[solution](src/main/kotlin/K03.kt)
+
 **($) Find the K'th element of a list.**
 
 The first element in the list is number 1.
@@ -52,17 +63,29 @@ The first element in the list is number 1.
     c
 
 #### K04
+
+[solution](src/main/kotlin/K04.kt)
+
 **($) Find the number of elements of a list.**
 
 #### K05
+
+[solution](src/main/kotlin/K05.kt)
+
 **($) Reverse a list.**
 
 #### K06
+
+[solution](src/main/kotlin/K06.kt)
+
 **($) Find out whether a list is a palindrome.**
 
 A palindrome can be read forward or backward; e.g. `[x,a,m,a,x]`.
 
-#### [K07](src/main/kotlin/k07.kt)
+#### K07
+
+[solution](src/main/kotlin/K07.kt)
+
 **($$) Flatten a nested list structure.**
 
 Transform a list, possibly holding lists as elements into a 'flat' list by replacing each list with its elements (recursively).
@@ -73,25 +96,37 @@ Transform a list, possibly holding lists as elements into a 'flat' list by repla
 
     Hint: Use the predefined predicates is_list/1 and append/3
 
-#### [K08](src/main/kotlin/k08.kt)
+#### K08
+
+[solution](src/main/kotlin/K08.kt)
+
 **($$) Eliminate consecutive duplicates of list elements.**
-    If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
+
+If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
 
     Example:
     ?- compress([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [a,b,c,a,d,e]
 
-#### [K09](src/main/kotlin/k09.kt)
+#### K09
+
+[solution](src/main/kotlin/K09.kt)
+
 **($$) Pack consecutive duplicates of list elements into sublists.**
-    If a list contains repeated elements they should be placed in separate sublists.
+
+If a list contains repeated elements they should be placed in separate sublists.
 
     Example:
     ?- pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e]]
 
-#### [K10](src/main/kotlin/k10.kt)
+#### K10
+
+[solution](src/main/kotlin/K10.kt)
+
 **($) Run-length encoding of a list.**
-Use the result of problem [P09](#k09) to implement the so-called run-length encoding
+
+Use the result of problem [K09](#k09) to implement the so-called run-length encoding
 data compression method. Consecutive duplicates of elements are encoded as
 pairs `(N to E)` where `N` is the number of duplicates of the element `E`.
 
@@ -99,12 +134,13 @@ pairs `(N to E)` where `N` is the number of duplicates of the element `E`.
     ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e])
     [(4 to a),(1 to b),(2 to c),(2 to a),(1 to d),(4 to e)]
 
-## UNDER CONSTRUCTION
-
 #### K11
+
+[solution](src/main/kotlin/K11.kt)
+
 **($) Modified run-length encoding.**
 
-Modify the result of problem [P10](#k10) in such a way that if an element has
+Modify the result of problem [K10](#k10) in such a way that if an element has
 no duplicates it is simply copied into the result list. Only elements with
 duplicates are transferred as [N,E] terms.
 
@@ -113,17 +149,23 @@ duplicates are transferred as [N,E] terms.
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
 #### K12
+
+[solution](src/main/kotlin/K12.kt)
+
 **($$) Decode a run-length encoded list.**
 
-Given a run-length code list generated as specified in problem [P11](#k11). Construct
+Given a run-length code list generated as specified in problem [K11](#k11). Construct
 its uncompressed version.
 
 #### K13
+
+[solution](src/main/kotlin/K13.kt)
+
 **($$) Run-length encoding of a list (direct solution).**
 
 Implement the so-called run-length encoding data compression method directly.
 I.e. don't explicitly create the sublists containing the duplicates, as in
-problem [P09](#k09), but only count them. As in problem [P11](#k11), simplify
+problem [K09](#k09), but only count them. As in problem [K11](#k11), simplify
 the result list by replacing the singleton terms [1,X] by X.
 
     Example:
@@ -131,13 +173,21 @@ the result list by replacing the singleton terms [1,X] by X.
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
 #### K14
+
+[solution](src/main/kotlin/K14.kt)
+
 **($) Duplicate the elements of a list.**
 
     Example:
     ?- dupli([a,b,c,c,d],X).
     X = [a,a,b,b,c,c,c,c,d,d]
 
+## UNDER CONSTRUCTION
+
 #### K15
+
+[solution](src/main/kotlin/K15.kt)
+
 **($$) Duplicate the elements of a list a given number of times.**
 
     Example:
@@ -148,6 +198,9 @@ the result list by replacing the singleton terms [1,X] by X.
     ?- dupli(X,3,Y).
 
 #### K16
+
+[solution](src/main/kotlin/K16.kt)
+
 **($$) Drop every N'th element from a list.**
 
     Example:
@@ -155,6 +208,9 @@ the result list by replacing the singleton terms [1,X] by X.
     X = [a,b,d,e,g,h,k]
 
 #### K17
+
+[solution](src/main/kotlin/K17.kt)
+
 **($) Split a list into two parts; the length of the first part is given.**
     Do not use any predefined predicates.
 
@@ -164,6 +220,9 @@ the result list by replacing the singleton terms [1,X] by X.
     L2 = [d,e,f,g,h,i,k]
 
 #### K18
+
+[solution](src/main/kotlin/K18.kt)
+
 **($$) Extract a slice from a list.**
     Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
 
@@ -172,6 +231,9 @@ the result list by replacing the singleton terms [1,X] by X.
     X = [c,d,e,f,g]
 
 #### K19
+
+[solution](src/main/kotlin/K19.kt)
+
 **($$) Rotate a list N places to the left.**
     Examples:
     ?- rotate([a,b,c,d,e,f,g,h],3,X).
@@ -180,9 +242,12 @@ the result list by replacing the singleton terms [1,X] by X.
     ?- rotate([a,b,c,d,e,f,g,h],-2,X).
     X = [g,h,a,b,c,d,e,f]
 
-    Hint: Use the predefined predicates length/2 and append/3, as well as the result of problem P17.
+    Hint: Use the predefined predicates length/2 and append/3, as well as the result of problem K17.
 
 #### K20
+
+[solution](src/main/kotlin/K20.kt)
+
 **($) Remove the K'th element from a list.**
 
     Example:
@@ -191,6 +256,9 @@ the result list by replacing the singleton terms [1,X] by X.
     R = [a,c,d]
 
 #### K21
+
+[solution](src/main/kotlin/K21.kt)
+
 **($) Insert an element at a given position into a list.**
 
     Example:
@@ -198,6 +266,9 @@ the result list by replacing the singleton terms [1,X] by X.
     L = [a,alfa,b,c,d]
 
 #### K22
+
+[solution](src/main/kotlin/K22.kt)
+
 **($) Create a list containing all integers within a given range.**
 
     Example:
@@ -205,6 +276,9 @@ the result list by replacing the singleton terms [1,X] by X.
     L = [4,5,6,7,8,9]
 
 #### K23
+
+[solution](src/main/kotlin/K23.kt)
+
 **($$) Extract a given number of randomly selected elements from a list.**
     The selected items shall be put into a result list.
 
@@ -212,9 +286,12 @@ the result list by replacing the singleton terms [1,X] by X.
     ?- rnd_select([a,b,c,d,e,f,g,h],3,L).
     L = [e,d,a]
 
-    Hint: Use the built-in random number generator random/2 and the result of problem P20.
+    Hint: Use the built-in random number generator random/2 and the result of problem K20.
 
 #### K24
+
+[solution](src/main/kotlin/K24.kt)
+
 **($) Lotto: Draw N different random numbers from the set 1..M.**
     The selected numbers shall be put into a result list.
 
@@ -222,18 +299,24 @@ the result list by replacing the singleton terms [1,X] by X.
     ?- rnd_select(6,49,L).
     L = [23,1,17,33,21,37]
 
-    Hint: Combine the solutions of problems P22 and P23.
+    Hint: Combine the solutions of problems K22 and K23.
 
 #### K25
+
+[solution](src/main/kotlin/K25.kt)
+
 **($) Generate a random permutation of the elements of a list.**
 
     Example:
     ?- rnd_permu([a,b,c,d,e,f],L).
     L = [b,a,d,c,e,f]
 
-    Hint: Use the solution of problem P23.
+    Hint: Use the solution of problem K23.
 
 #### K26
+
+[solution](src/main/kotlin/K26.kt)
+
 **($$) Generate the combinations of K distinct objects chosen from the N elements of a list**
     In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities (via backtracking).
 
@@ -245,6 +328,9 @@ the result list by replacing the singleton terms [1,X] by X.
     ...
 
 #### K27
+
+[solution](src/main/kotlin/K27.kt)
+
 **($$) Group the elements of a set into disjoint subsets.**
     a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? Write a predicate that generates all the possibilities via backtracking.
 
@@ -265,6 +351,9 @@ the result list by replacing the singleton terms [1,X] by X.
     You may find more about this combinatorial problem in a good book on discrete mathematics under the term "multinomial coefficients".
 
 #### K28
+
+[solution](src/main/kotlin/K28.kt)
+
 **($$) Sorting a list of lists according to length of sublists**
 
 a) We suppose that a list (InList) contains elements that are lists themselves. The objective is to sort the elements of InList according to their length. E.g. short lists first, longer lists later, or vice versa.
@@ -284,6 +373,9 @@ b) Again, we suppose that a list (InList) contains elements that are lists thems
 ### Arithmetic
 
 #### K31
+
+[solution](src/main/kotlin/K31.kt)
+
 **($$) Determine whether a given integer number is prime.**
 
     Example:
@@ -291,6 +383,9 @@ b) Again, we suppose that a list (InList) contains elements that are lists thems
     Yes
 
 #### K32
+
+[solution](src/main/kotlin/K32.kt)
+
 **($$) Determine the greatest common divisor of two positive integer numbers.**
 
 Use Euclid's algorithm.
@@ -304,6 +399,9 @@ Define gcd as an arithmetic function; so you can use it like this:
     G = 9
 
 #### K33
+
+[solution](src/main/kotlin/K33.kt)
+
 **($) Determine whether two positive integer numbers are coprime.**
 
 Two numbers are coprime if their greatest common divisor equals 1.
@@ -313,6 +411,9 @@ Two numbers are coprime if their greatest common divisor equals 1.
     Yes
 
 #### K34
+
+[solution](src/main/kotlin/K34.kt)
+
 **($$) Calculate Euler's totient function phi(m).**
 
 Euler's so-called totient function phi(m) is defined as the number of positive integers r (1 <= r < m) that are coprime to m.
@@ -325,6 +426,9 @@ Euler's so-called totient function phi(m) is defined as the number of positive i
     Find out what the value of phi(m) is if m is a prime number. Euler's totient function plays an important role in one of the most widely used public key cryptography methods (RSA). In this exercise you should use the most primitive method to calculate this function (there are smarter ways that we shall discuss later).
 
 #### K35
+
+[solution](src/main/kotlin/K35.kt)
+
 **($$) Determine the prime factors of a given positive integer.**
 
 Construct a flat list containing the prime factors in ascending order.
@@ -334,6 +438,9 @@ Construct a flat list containing the prime factors in ascending order.
     L = [3,3,5,7]
 
 #### K36
+
+[solution](src/main/kotlin/K36.kt)
+
 **($$) Determine the prime factors of a given positive integer (2).**
 
 Construct a list containing the prime factors and their multiplicity.
@@ -342,28 +449,40 @@ Construct a list containing the prime factors and their multiplicity.
     ?- prime_factors_mult(315, L).
     L = [[3,2],[5,1],[7,1]]
 
-Hint: The problem is similar to problem P13.
+Hint: The problem is similar to problem K13.
 
 #### K37
+
+[solution](src/main/kotlin/K37.kt)
+
 **($$) Calculate Euler's totient function phi(m) (improved).**
 
-See problem P34 for the definition of Euler's totient function. If the list of the prime factors of a number m is known in the form of problem P36 then the function phi(m) can be efficiently calculated as follows: Let [[p1,m1],[p2,m2],[p3,m3],...] be the list of prime factors (and their multiplicities) of a given number m. Then phi(m) can be calculated with the following formula:
+See problem K34 for the definition of Euler's totient function. If the list of the prime factors of a number m is known in the form of problem K36 then the function phi(m) can be efficiently calculated as follows: Let [[p1,m1],[p2,m2],[p3,m3],...] be the list of prime factors (and their multiplicities) of a given number m. Then phi(m) can be calculated with the following formula:
 
     phi(m) = (p1 - 1) * p1**(m1 - 1) * (p2 - 1) * p2**(m2 - 1) * (p3 - 1) * p3**(m3 - 1) * ...
 
     Note that a**b stands for the b'th power of a.
 
 #### K38
+
+[solution](src/main/kotlin/K38.kt)
+
 **($) Compare the two methods of calculating Euler's totient function.**
 
-Use the solutions of problems P34 and P37 to compare the algorithms. Take the number of logical inferences as a measure for efficiency. Try to calculate phi(10090) as an example.
+Use the solutions of problems K34 and K37 to compare the algorithms. Take the number of logical inferences as a measure for efficiency. Try to calculate phi(10090) as an example.
 
 #### K39
+
+[solution](src/main/kotlin/K39.kt)
+
 **($) A list of prime numbers.**
 
 Given a range of integers by its lower and upper limit, construct a list of all prime numbers in that range.
 
 #### K40
+
+[solution](src/main/kotlin/K40.kt)
+
 **($$) Goldbach's conjecture.**
 
 Goldbach's conjecture says that every positive even number greater than 2 is the sum of two prime numbers. Example: 28 = 5 + 23. It is one of the most famous facts in number theory that has not been proved to be correct in the general case. It has been numerically confirmed up to very large numbers (much larger than we can go with our Prolog system). Write a predicate to find the two prime numbers that sum up to a given even integer.
@@ -373,6 +492,9 @@ Goldbach's conjecture says that every positive even number greater than 2 is the
     L = [5,23]
 
 #### K41
+
+[solution](src/main/kotlin/K41.kt)
+
 **($$) A list of Goldbach compositions.**
 
 Given a range of integers by its lower and upper limit, print a list of all even numbers and their Goldbach composition.
@@ -398,6 +520,9 @@ Given a range of integers by its lower and upper limit, print a list of all even
 ### Logic and Codes
 
 #### K46
+
+[solution](src/main/kotlin/K46.kt)
+
 **($$) Truth tables for logical expressions.**
 
 Define predicates and/2, or/2, nand/2, nor/2, xor/2, impl/2 and equ/2 (for logical equivalence) which succeed or fail according to the result of their respective operations; e.g. and(A,B) will succeed, if and only if both A and B succeed. Note that A and B can be Prolog goals (not only the constants true and fail).
@@ -414,9 +539,12 @@ Now, write a predicate table/3 which prints the truth table of a given logical e
     fail fail fail
 
 #### K47
+
+[solution](src/main/kotlin/K47.kt)
+
 **($) Truth tables for logical expressions (2).**
 
-Continue problem P46 by defining and/2, or/2, etc as being operators. This allows to write the logical expression in the more natural way, as in the example: A and (A or not B). Define operator precedence as usual; i.e. as in Java.
+Continue problem K46 by defining and/2, or/2, etc as being operators. This allows to write the logical expression in the more natural way, as in the example: A and (A or not B). Define operator precedence as usual; i.e. as in Java.
 
     Example:
     ?- table(A,B, A and (A or not B)).
@@ -426,9 +554,12 @@ Continue problem P46 by defining and/2, or/2, etc as being operators. This allow
     fail fail fail
 
 #### K48
+
+[solution](src/main/kotlin/K48.kt)
+
 **($$) Truth tables for logical expressions (3).**
 
-Generalize problem P47 in such a way that the logical expression may contain any number of logical variables. Define table/2 in a way that table(List,Expr) prints the truth table for the expression Expr, which contains the logical variables enumerated in List.
+Generalize problem K47 in such a way that the logical expression may contain any number of logical variables. Define table/2 in a way that table(List,Expr) prints the truth table for the expression Expr, which contains the logical variables enumerated in List.
 
     Example:
     ?- table([A,B,C], A and (B or C) equ A and B or A and C).
@@ -442,6 +573,9 @@ Generalize problem P47 in such a way that the logical expression may contain any
     fail fail fail true
 
 #### K49
+
+[solution](src/main/kotlin/K49.kt)
+
 **($$) Gray code.**
 
 An n-bit Gray code is a sequence of n-bit strings constructed according to certain rules. For example,
@@ -457,6 +591,9 @@ Find out the construction rules and write a predicate with the following specifi
 Can you apply the method of "result caching" in order to make the predicate more efficient, when it is to be used repeatedly?
 
 #### K50
+
+[solution](src/main/kotlin/K50.kt)
+
 **($$$) Huffman code.**
 
 First of all, consult a good book on discrete mathematics or algorithms for a detailed description of Huffman codes!
@@ -485,6 +622,9 @@ T2 = t(a,nil,nil) or an empty binary tree: T3 = nil
 You can check your predicates using these example trees. They are given as test cases in p54.pl.
 
 #### K54
+
+[solution](src/main/kotlin/K54.kt)
+
 **($) Check whether a given term represents a binary tree**
 
 Write a predicate istree/1 which succeeds if and only if its argument is a Prolog term representing a binary tree.
@@ -496,6 +636,9 @@ Write a predicate istree/1 which succeeds if and only if its argument is a Prolo
     No
 
 #### K55
+
+[solution](src/main/kotlin/K55.kt)
+
 **($$) Construct completely balanced binary trees**
 
 In a completely balanced binary tree, the following property holds for every node: The number of nodes in its left subtree and the number of nodes in its right subtree are almost equal, which means their difference is not greater than one.
@@ -509,10 +652,16 @@ Write a predicate cbal_tree/2 to construct completely balanced binary trees for 
     etc......No
 
 #### K56
+
+[solution](src/main/kotlin/K56.kt)
+
 **($$) Symmetric binary trees**
     Let us call a binary tree symmetric if you can draw a vertical line through the root node and then the right subtree is the mirror image of the left subtree. Write a predicate symmetric/1 to check whether a given binary tree is symmetric. Hint: Write a predicate mirror/2 first to check whether one tree is the mirror image of another. We are only interested in the structure, not in the contents of the nodes.
 
 #### K57
+
+[solution](src/main/kotlin/K57.kt)
+
 **($$) Binary search trees (dictionaries)**
 
 Use the predicate add/3, developed in chapter 4 of the course, to write a predicate to construct a binary search tree from a list of integer numbers.
@@ -521,7 +670,7 @@ Use the predicate add/3, developed in chapter 4 of the course, to write a predic
     ?- construct([3,2,5,7,1],T).
     T = t(3, t(2, t(1, nil, nil), nil), t(5, nil, t(7, nil, nil)))
 
-Then use this predicate to test the solution of the problem P56.
+Then use this predicate to test the solution of the problem K56.
 
     Example:
     ?- test_symmetric([5,3,18,1,4,12,21]).
@@ -530,6 +679,9 @@ Then use this predicate to test the solution of the problem P56.
     No
 
 #### K58
+
+[solution](src/main/kotlin/K58.kt)
+
 **($$) Generate-and-test paradigm**
 
 Apply the generate-and-test paradigm to construct all symmetric, completely balanced binary trees with a given number of nodes. Example:
@@ -540,6 +692,9 @@ Apply the generate-and-test paradigm to construct all symmetric, completely bala
 How many such trees are there with 57 nodes? Investigate about how many solutions there are for a given number of nodes? What if the number is even? Write an appropriate predicate.
 
 #### K59
+
+[solution](src/main/kotlin/K59.kt)
+
 **($$) Construct height-balanced binary trees**
 
 In a height-balanced binary tree, the following property holds for every node: The height of its left subtree and the height of its right subtree are almost equal, which means their difference is not greater than one.
@@ -553,6 +708,9 @@ Write a predicate hbal_tree/2 to construct height-balanced binary trees for a gi
     etc......No
 
 #### K60
+
+[solution](src/main/kotlin/K60.kt)
+
 **($$) Construct height-balanced binary trees with a given number of nodes**
 
 Consider a height-balanced binary tree of height H. What is the maximum number of nodes it can contain?
@@ -574,24 +732,30 @@ Now, we can attack the main problem: construct all the height-balanced binary tr
 Find out how many height-balanced trees exist for N = 15.
 
 #### K61
+
+[solution](src/main/kotlin/K61.kt)
+
 **($) Count the leaves of a binary tree**
 
 A leaf is a node with no successors. Write a predicate count_leaves/2 to count them.
 
     % count_leaves(T,N) :- the binary tree T has N leaves
 
-P61A ($) Collect the leaves of a binary tree in a list
+K61A ($) Collect the leaves of a binary tree in a list
     A leaf is a node with no successors. Write a predicate leaves/2 to collect them in a list.
 
     % leaves(T,S) :- S is the list of all leaves of the binary tree T
 
 #### K62
+
+[solution](src/main/kotlin/K62.kt)
+
 **($) Collect the internal nodes of a binary tree in a list**
     An internal node of a binary tree has either one or two non-empty successors. Write a predicate internals/2 to collect them in a list.
 
     % internals(T,S) :- S is the list of internal nodes of the binary tree T.
 
-P62B ($) Collect the nodes at a given level in a list
+K62B ($) Collect the nodes at a given level in a list
     A node of a binary tree is at level N if the path from the root to the node has length N-1. The root node is at level 1. Write a predicate atlevel/3 to collect all nodes at a given level in a list.
 
     % atlevel(T,L,S) :- S is the list of nodes of the binary tree T at level L
@@ -599,6 +763,9 @@ P62B ($) Collect the nodes at a given level in a list
     Using atlevel/3 it is easy to construct a predicate levelorder/2 which creates the level-order sequence of the nodes. However, there are more efficient ways to do that.
 
 #### K63
+
+[solution](src/main/kotlin/K63.kt)
+
 **($$) Construct a complete binary tree**
     A complete binary tree with height H is defined as follows: The levels 1,2,3,...,H-1 contain the maximum number of nodes (i.e 2**(i-1) at the level i, note that we start counting the levels from 1 at the root). In level H, which may contain less than the maximum possible number of nodes, all the nodes are "left-adjusted". This means that in a levelorder tree traversal all internal nodes come first, the leaves come second, and empty successors (the nil's which are not really nodes!) come last.
 
@@ -611,6 +778,9 @@ P62B ($) Collect the nodes at a given level in a list
     Test your predicate in an appropriate way.
 
 #### K64
+
+[solution](src/main/kotlin/K64.kt)
+
 **($$) Layout a binary tree (1)**
     Given a binary tree as the usual Prolog term t(X,L,R) (or nil). As a preparation for drawing the tree, a layout algorithm is required to determine the position of each node in a rectangular grid. Several layout methods are conceivable, one of them is shown in the illustration below.
 
@@ -633,20 +803,29 @@ P62B ($) Collect the nodes at a given level in a list
     Test your predicate in an appropriate way.
 
 #### K65
+
+[solution](src/main/kotlin/K65.kt)
+
 **($$) Layout a binary tree (2)**
     An alternative layout method is depicted in the illustration opposite. Find out the rules and write the corresponding Prolog predicate. Hint: On a given level, the horizontal distance between neighboring nodes is constant.
 
-    Use the same conventions as in problem P64 and test your predicate in an appropriate way.
+    Use the same conventions as in problem K64 and test your predicate in an appropriate way.
 
 #### K66
+
+[solution](src/main/kotlin/K66.kt)
+
 **($$$) Layout a binary tree (3)**
     Yet another layout strategy is shown in the illustration opposite. The method yields a very compact layout while maintaining a certain symmetry in every node. Find out the rules and write the corresponding Prolog predicate. Hint: Consider the horizontal distance between a node and its successor nodes. How tight can you pack together two subtrees to construct the combined binary tree?
 
-    Use the same conventions as in problem P64 and P65 and test your predicate in an appropriate way. Note: This is a difficult problem. Don't give up too early!
+    Use the same conventions as in problem K64 and K65 and test your predicate in an appropriate way. Note: This is a difficult problem. Don't give up too early!
 
     Which layout do you like most?
 
 #### K67
+
+[solution](src/main/kotlin/K67.kt)
+
 **($$) A string representation of binary trees**
 
     Somebody represents binary trees as strings of the following type (see example opposite):
@@ -660,10 +839,13 @@ P62B ($) Collect the nodes at a given level in a list
     For simplicity, suppose the information in the nodes is a single letter and there are no spaces in the string.
 
 #### K68
-**($$) Preorder and inorder sequences of binary trees**
-    We consider binary trees with nodes that are identified by single lower-case letters, as in the example of problem P67.
 
-    a) Write predicates preorder/2 and inorder/2 that construct the preorder and inorder sequence of a given binary tree, respectively. The results should be atoms, e.g. 'abdecfg' for the preorder sequence of the example in problem P67.
+[solution](src/main/kotlin/K68.kt)
+
+**($$) Preorder and inorder sequences of binary trees**
+    We consider binary trees with nodes that are identified by single lower-case letters, as in the example of problem K67.
+
+    a) Write predicates preorder/2 and inorder/2 that construct the preorder and inorder sequence of a given binary tree, respectively. The results should be atoms, e.g. 'abdecfg' for the preorder sequence of the example in problem K67.
 
     b) Can you use preorder/2 from problem part a) in the reverse direction; i.e. given a preorder sequence, construct a corresponding tree? If not, make the necessary arrangements.
 
@@ -674,8 +856,11 @@ P62B ($) Collect the nodes at a given level in a list
     What happens if the same character appears in more than one node. Try for instance pre_in_tree(aba,baa,T).
 
 #### K69
+
+[solution](src/main/kotlin/K69.kt)
+
 **($$) Dotstring representation of binary trees**
-    We consider again binary trees with nodes that are identified by single lower-case letters, as in the example of problem P67. Such a tree can be represented by the preorder sequence of its nodes in which dots (.) are inserted where an empty subtree (nil) is encountered during the tree traversal. For example, the tree shown in problem P67 is represented as 'abd..e..c.fg...'. First, try to establish a syntax (BNF or syntax diagrams) and then write a predicate tree_dotstring/2 which does the conversion in both directions. Use difference lists.
+    We consider again binary trees with nodes that are identified by single lower-case letters, as in the example of problem K67. Such a tree can be represented by the preorder sequence of its nodes in which dots (.) are inserted where an empty subtree (nil) is encountered during the tree traversal. For example, the tree shown in problem K67 is represented as 'abd..e..c.fg...'. First, try to establish a syntax (BNF or syntax diagrams) and then write a predicate tree_dotstring/2 which does the conversion in both directions. Use difference lists.
 
 Multiway Trees
 A multiway tree is composed of a root element and a (possibly empty) set of successors which are multiway trees themselves. A multiway tree is never empty. The set of successor trees is sometimes called a forest.
@@ -686,14 +871,14 @@ In Prolog we represent a multiway tree by a term t(X,F), where X denotes the roo
 T = t(a,[t(f,[t(g,[])]),t(c,[]),t(b,[t(d,[]),t(e,[])])])
 
 
-P70B ($) Check whether a given term represents a multiway tree
+K70B ($) Check whether a given term represents a multiway tree
     Write a predicate istree/1 which succeeds if and only if its argument is a Prolog term representing a multiway tree.
 
     Example:
     ?- istree(t(a,[t(f,[t(g,[])]),t(c,[]),t(b,[t(d,[]),t(e,[])])])).
     Yes
 
-P70C ($) Count the nodes of a multiway tree
+K70C ($) Count the nodes of a multiway tree
     Write a predicate nnodes/1 which counts the nodes of a given multiway tree.
 
     Example:
@@ -703,6 +888,9 @@ P70C ($) Count the nodes of a multiway tree
     Write another version of the predicate that allows for a flow pattern (o,i).
 
 #### K70
+
+[solution](src/main/kotlin/K70.kt)
+
 **($$) Tree construction from a node string**
 
 We suppose that the nodes of a multiway tree contain single characters. In the depth-first order sequence of its nodes, a special character ^ has been inserted whenever, during the tree traversal, the move is a backtrack to the previous level.
@@ -712,16 +900,25 @@ By this rule, the tree in the figure opposite is represented as: `afg^^c^bd^e^^^
 Define the syntax of the string and write a predicate `tree(String,Tree)` to construct the Tree when the String is given. Work with atoms (instead of strings). Make your predicate work in both directions.
 
 #### K71
+
+[solution](src/main/kotlin/K71.kt)
+
 **($) Determine the internal path length of a tree**
 
-We define the internal path length of a multiway tree as the total sum of the path lengths from the root to all nodes of the tree. By this definition, the tree in the figure of problem P70 has an internal path length of 9. Write a predicate ipl(Tree,IPL) for the flow pattern (+,-).
+We define the internal path length of a multiway tree as the total sum of the path lengths from the root to all nodes of the tree. By this definition, the tree in the figure of problem K70 has an internal path length of 9. Write a predicate ipl(Tree,IPL) for the flow pattern (+,-).
 
 #### K72
+
+[solution](src/main/kotlin/K72.kt)
+
 **($) Construct the bottom-up order sequence of the tree nodes**
 
 Write a predicate bottom_up(Tree,Seq) which constructs the bottom-up sequence of the nodes of the multiway tree Tree. Seq should be a Prolog list. What happens if you run your predicate backwords?
 
 #### K73
+
+[solution](src/main/kotlin/K73.kt)
+
 **($$) Lisp-like tree representation**
 
 There is a particular notation for multiway trees in Lisp. Lisp is a prominent functional programming language, which is used primarily for artificial intelligence problems. As such it is one of the main competitors of Prolog. In Lisp almost everything is a list, just as in Prolog everything is a term.
@@ -842,21 +1039,33 @@ Human-friendly form
 The notation for labelled graphs can also be used for so-called multi-graphs, where more than one edge (or arc) are allowed between two given nodes.
 
 #### K80
+
+[solution](src/main/kotlin/K80.kt)
+
 **($$$) Conversions**
 
 Write predicates to convert between the different graph representations. With these predicates, all representations are equivalent; i.e. for the following problems you can always pick freely the most convenient form. The reason this problem is rated ($$$) is not because it's particularly difficult, but because it's a lot of work to deal with all the special cases.
 
 #### K81
+
+[solution](src/main/kotlin/K81.kt)
+
 **($$) Path from one node to another one**
 
 Write a predicate path(G,A,B,P) to find an acyclic path P from node A to node b in the graph G. The predicate should return all paths via backtracking.
 
 #### K82
+
+[solution](src/main/kotlin/K82.kt)
+
 **($) Cycle from a given node**
 
 Write a predicate cycle(G,A,P) to find a closed path (cycle) P starting at a given node A in the graph G. The predicate should return all cycles via backtracking.
 
 #### K83
+
+[solution](src/main/kotlin/K83.kt)
+
 **($$) Construct all spanning trees**
 
 Write a predicate s_tree(Graph,Tree) to construct (by backtracking) all
@@ -868,15 +1077,21 @@ predicates: is_tree(Graph) and is_connected(Graph). Both are five-minute
 tasks!
 
 #### K84
+
+[solution](src/main/kotlin/K84.kt)
+
 **($$) Construct the minimal spanning tree**
 
 Write a predicate ms_tree(Graph,Tree,Sum) to construct the minimal spanning
 tree of a given labelled graph. Hint: Use the algorithm of Prim. A small
-modification of the solution of P83 does the trick. The data of the example
+modification of the solution of K83 does the trick. The data of the example
 graph to the right can be found in the file p84.dat.
 
 
 #### K85
+
+[solution](src/main/kotlin/K85.kt)
+
 **($$) Graph isomorphism**
 
 Two graphs G1(N1,E1) and G2(N2,E2) are isomorphic if there is a bijection f: N1
@@ -887,6 +1102,9 @@ Write a predicate that determines whether two graphs are isomorphic. Hint: Use
 an open-ended list to represent the function f.
 
 #### K86
+
+[solution](src/main/kotlin/K86.kt)
+
 **($$) Node degree and graph coloration**
 
 a) Write a predicate degree(Graph,Node,Deg) that determines the degree of a given node.
@@ -898,16 +1116,25 @@ c) Use Welch-Powell's algorithm to paint the nodes of a graph in such a way
 that adjacent nodes have different colors.
 
 #### K87
+
+[solution](src/main/kotlin/K87.kt)
+
 **($$) Depth-first order graph traversal (alternative solution)**
 
 Write a predicate that generates a depth-first order graph traversal sequence. The starting point should be specified, and the output should be a list of nodes that are reachable from this starting point (in depth-first order).
 
 #### K88
+
+[solution](src/main/kotlin/K88.kt)
+
 **($$) Connected components (alternative solution)**
 
 Write a predicate that splits a graph into its connected components.
 
 #### K89
+
+[solution](src/main/kotlin/K89.kt)
+
 **($$) Bipartite graphs**
 
 Write a predicate that finds out whether a given graph is bipartite.
@@ -916,6 +1143,9 @@ Write a predicate that finds out whether a given graph is bipartite.
 ### Miscellaneous Problems
 
 #### K90
+
+[solution](src/main/kotlin/K90.kt)
+
 **($$) Eight queens problem**
 
 This is a classical problem in computer science. The objective is to place eight queens on a chessboard so that no two queens are attacking each other; i.e., no two queens are in the same row, the same column, or on the same diagonal.
@@ -926,6 +1156,9 @@ queen in the second column is in row 2, etc. Use the generate-and-test
 paradigm.
 
 #### K91
+
+[solution](src/main/kotlin/K91.kt)
+
 **($$) Knight's tour**
 
 Another famous problem is this one: How can a knight jump on an NxN chessboard
@@ -939,6 +1172,9 @@ And finally, represent the solution of our problem as a list of N*N knight
 positions (the knight's tour).
 
 #### K92
+
+[solution](src/main/kotlin/K92.kt)
+
 **($$$) Von Koch's conjecture**
 
 Several years ago I met a mathematician who was intrigued by a problem for
@@ -959,6 +1195,9 @@ Write a predicate that calculates a numbering scheme for a given tree. What is
 the solution for the larger tree pictured above?
 
 #### K93
+
+[solution](src/main/kotlin/K93.kt)
+
 **($$$) An arithmetic puzzle**
 
 Given a list of integer numbers, find a correct way of inserting arithmetic
@@ -967,6 +1206,9 @@ list of numbers [2,3,5,7,11] we can form the equations 2-3+5+7 = 11 or 2 =
 (3*5+7)/11 (and ten others!).
 
 #### K94
+
+[solution](src/main/kotlin/K94.kt)
+
 **($$$) Generate K-regular simple graphs with N nodes**
 
 In a K-regular graph all nodes have a degree of K; i.e. the number of edges
@@ -975,6 +1217,9 @@ nodes are there? See also a table of results and a Java applet that can
 represent graphs geometrically.
 
 #### K95
+
+[solution](src/main/kotlin/K95.kt)
+
 **($$) English number words**
 
 On financial documents, like cheques, numbers must sometimes be written in full
@@ -984,6 +1229,9 @@ Example: 175 must be written as one-seven-five. Write a predicate
 full_words/1 to print (non-negative) integer numbers in full words.
 
 #### K96
+
+[solution](src/main/kotlin/K96.kt)
+
 **($$) Syntax checker (alternative solution with difference lists)**
 
 In a certain programming language (Ada) identifiers are defined by the syntax diagram (railroad chart) opposite. Transform the syntax diagram into a system of syntax diagrams which do not contain loops; i.e. which are purely recursive. Using these modified diagrams, write a predicate identifier/1 that can check whether or not a given string is a legal identifier.
@@ -991,6 +1239,9 @@ In a certain programming language (Ada) identifiers are defined by the syntax di
     % identifier(Str) :- Str is a legal identifier
 
 #### K97
+
+[solution](src/main/kotlin/K97.kt)
+
 **($$) Sudoku**
 
 Sudoku puzzles go like this:
@@ -1019,6 +1270,9 @@ Sudoku puzzles go like this:
 Every spot in the puzzle belongs to a (horizontal) row and a (vertical) column, as well as to one single 3x3 square (which we call "square" for short). At the beginning, some of the spots carry a single-digit number between 1 and 9. The problem is to fill the missing spots with digits in such a way that every number between 1 and 9 appears exactly once in each row, in each column, and in each square.
 
 #### K98
+
+[solution](src/main/kotlin/K98.kt)
+
 **($$$) Nonograms**
 
 Around 1994, a certain kind of puzzles was very popular in England. The "Sunday Telegraph" newspaper wrote: "Nonograms are puzzles from Japan and are currently published each week only in The Sunday Telegraph. Simply use your logic and skill to complete the grid and reveal a picture or diagram." As a Prolog programmer, you are in a better situation: you can have your computer do the work! Just write a little program ;-).
@@ -1043,6 +1297,9 @@ Around 1994, a certain kind of puzzles was very popular in England. The "Sunday 
     For the example above, the problem can be stated as the two lists [[3],[2,1],[3,2],[2,2],[6],[1,5],[6],[1],[2]] and [[1,2],[3,1],[1,5],[7,1],[5],[3],[4],[3]] which give the "solid" lengths of the rows and columns, top-to-bottom and left-to-right, respectively. Published puzzles are larger than this example, e.g. 25 x 20, and apparently always have unique solutions.
 
 #### K99
+
+[solution](src/main/kotlin/K99.kt)
+
 **($$$) Crossword puzzle**
 
 Given an empty (or almost empty) framework of a crossword puzzle and a set of words. The problem is to place the words into the framework.
@@ -1055,5 +1312,5 @@ Hints:
 
 1. The problem is not easy. You will need some time to thoroughly understand it. So, don't give up too early! And remember that the objective is a clean solution, not just a quick-and-dirty hack!
 2. Reading the data file is a tricky problem for which a solution is provided in the file p99-readfile.pl. Use the predicate read_lines/2.
-3. For efficiency reasons it is important, at least for larger puzzles, to sort the words and the sites in a particular order. For this part of the problem, the solution of P28 may be very helpful.
+3. For efficiency reasons it is important, at least for larger puzzles, to sort the words and the sites in a particular order. For this part of the problem, the solution of K28 may be very helpful.
 

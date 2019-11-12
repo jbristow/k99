@@ -24,5 +24,4 @@ fun main() {
         myLast(listOf(listOf(1, 2, 3), listOf(3, 4, 5), listOf(3, 1, 4, 1, 5), listOf(5, 1)))
     )
 // returns [5, 1]
-
 }
