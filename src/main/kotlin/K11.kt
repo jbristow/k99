@@ -1,7 +1,7 @@
 import arrow.core.None
 import arrow.core.Option
 import arrow.core.Some
-import fancy.types.EncodedDirect
+import fancy.types.Encoded
 
 /* ($) Modified run-length encoding.
  *
@@ -12,24 +12,24 @@ import fancy.types.EncodedDirect
 
 tailrec fun <X> encodeModified(
     remaining: List<X>,
-    curr: Option<EncodedDirect<X>> = Option.empty(),
-    output: List<EncodedDirect<X>> = emptyList()
-): List<EncodedDirect<X>> = when (curr) {
+    curr: Option<Encoded<X>> = Option.empty(),
+    output: List<Encoded<X>> = emptyList()
+): List<Encoded<X>> = when (curr) {
     is None ->
         when {
             remaining.isEmpty() -> output
             else -> encodeModified(
                 remaining.drop(1),
-                curr = Option.just(EncodedDirect.Singleton(remaining.first())),
+                curr = Option.just(Encoded(remaining.first())),
                 output = output
             )
         }
-    is Some<EncodedDirect<X>> ->
+    is Some<Encoded<X>> ->
         when {
-            (remaining.isNotEmpty() && curr.t.value == remaining.first()) ->
+            (remaining.isNotEmpty() && curr.t.values.first() == remaining.first()) ->
                 encodeModified(
                     remaining.drop(1),
-                    curr = curr.map { it.increment() },
+                    curr = curr.map { it + remaining.first() },
                     output = output
                 )
             else ->
