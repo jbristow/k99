@@ -1,10 +1,8 @@
 package fancy
 
 import arrow.core.Option
+import arrow.core.some
 import fancy.types.Listable
-import fancy.types.Listable.Empty
-import fancy.types.Listable.Listy
-import fancy.types.Listable.Single
 import fancy.types.listListableOf
 
 /*
@@ -14,17 +12,33 @@ import fancy.types.listListableOf
  *     "d"
  */
 
+/*
+ * This code doesn't work:
+ *     fun <T> myLast(xs: Empty<T>): Option<Listable<T>> = Option.empty()
+ *     fun <T> myLast(xs: Single<T>): Option<Listable<T>> = xs.some()
+ *     tailrec fun <T> myLast(xs: Listy<T>): Option<Listable<T>> = myLast(xs.tail())
+ *
+ *  Why? Because of TYPE ERASURE.
+ */
 tailrec fun <T> myLast(xs: Listable<T>): Option<T> {
     return when (xs) {
-        is Empty<T> -> Option.empty()
-        is Single<T> -> Option.just(xs.item)
-        is Listy<T> -> myLast(xs.tail())
+        is Listable.Empty<T> -> Option.empty()
+        is Listable.Single<T> -> xs.item.some()
+        is Listable.Listy<T> -> myLast(xs.tail())
     }
 }
 
 fun main() {
     println(
-        myLast(Listy(Single("a"), Single("b"), Single("c"), Single("d")))
+        myLast(
+            Listable.Listy(
+                Listable.Single("a"),
+                Listable.Single("b"),
+                listListableOf("a", "b"),
+                Listable.Single("c"),
+                Listable.Single("d")
+            )
+        )
     )
 // returns "d"
     println(
@@ -41,8 +55,9 @@ fun main() {
             )
         )
     )
+    // returns the list [5, 1]
 
-    println(myLast(Empty<Int>()))
+    println(myLast(Listable.Empty<Int>()))
 
-// returns the list [5, 1]
+
 }

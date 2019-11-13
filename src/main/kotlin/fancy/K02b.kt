@@ -12,26 +12,24 @@ import fancy.types.listListableOf
  *   (zweitletztes Element, l'avant-dernier élément)
  */
 
-fun <T> myLastButOneB(xs: Empty<T>) = Option.empty<Listable<T>>()
-fun <T> myLastButOneB(xs: Single<T>) = Option.empty<Listable<T>>()
-tailrec fun <T> myLastButOneB(xs: Listy<T>): Option<Listable<T>> =
-    when (xs.tail()) {
+tailrec fun <T> myLastButOne(xs: Listable<T>): Option<Listable<T>> =
+    when (xs) {
         is Empty -> Option.empty()
         is Single -> Option.just(xs.head())
-        is Listy -> myLastButOneB(xs.tail() as Listy)
+        is Listy -> myLastButOne(xs.tail())
     }
 
 fun main() {
     println(
-        myLastButOneB(listListableOf("a", "b", "c", "d"))
+        myLastButOne(listListableOf("a", "b", "c", "d"))
     )
 // returns "d"
     println(
-        myLastButOneB(listListableOf(1, 2, 4, 3))
+        myLastButOne(listListableOf(1, 2, 4, 3))
     )
 // returns 3
     println(
-        myLastButOneB(
+        myLastButOne(
             listListableOf(
                 listListableOf(1, 2, 3),
                 listListableOf(3, 4, 5),

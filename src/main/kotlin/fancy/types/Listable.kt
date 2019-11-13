@@ -28,7 +28,7 @@ sealed class Listable<X> {
         override fun head(): Empty<X> = Empty()
         override fun isEmpty() = true
 
-        override fun toString() = "L:[]"
+        override fun toString() = "[]"
 
         override fun equals(other: Any?): Boolean {
             return when (other) {
@@ -50,7 +50,7 @@ sealed class Listable<X> {
         override fun tail() = Empty<X>()
         override fun head(): Listable<X> = this
         override fun isEmpty() = false
-        override fun toString() = "L:[${item}]"
+        override fun toString() = "$item"
         override fun equals(other: Any?): Boolean {
             return when (other) {
                 !is Listable<*> -> false
@@ -76,7 +76,7 @@ sealed class Listable<X> {
 
         override fun head() = item.first()
         override fun isEmpty() = false
-        override fun toString() = "L:[${item.joinToString(", ") { it.toString() }}]"
+        override fun toString() = "[${item.joinToString(", ") { it.toString() }}]"
         override fun plusElement(element: Empty<X>) = this
 
         override fun plusElement(element: Single<X>) = Listy(*item, element)
